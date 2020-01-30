@@ -29,6 +29,7 @@ class _TopPageState extends State<TopPage3_0> {
           _WidgetA(counterBloc),
           _WidgetB(),
           _WidgetC(counterBloc),
+          LoadingWidget1(counterBloc.isLoading),
         ],
       ),
     );
@@ -84,6 +85,32 @@ class _WidgetC extends StatelessWidget {
         counterBloc.incrementCounter();
       },
       child: Icon(Icons.add),
+    );
+  }
+}
+
+class LoadingWidget1 extends StatelessWidget {
+  final Stream stream;
+
+  const LoadingWidget1(this.stream);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<bool>(
+      initialData: false,
+      stream: stream,
+      builder: (context, snapshot) {
+        return (snapshot.data)
+            ? const DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Color(0x44000000),
+                ),
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              )
+            : const SizedBox.shrink();
+      },
     );
   }
 }

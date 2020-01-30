@@ -1,4 +1,4 @@
-import 'package:architecture_test/top_page_1.dart';
+import 'package:architecture_test/top_page_3_0.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -37,7 +37,7 @@ class MyHomePage extends StatelessWidget {
               Navigator.push<void>(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TopPage1(),
+                    builder: (context) => TopPage3_0(),
                     fullscreenDialog: true,
                   ));
             },
