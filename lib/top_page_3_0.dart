@@ -1,5 +1,4 @@
-import 'package:architecture_test/count_repository.dart';
-import 'package:architecture_test/counter_bloc.dart';
+import 'package:architecture_test/remote_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +8,14 @@ class TopPage3_0 extends StatefulWidget {
 }
 
 class _TopPageState extends State<TopPage3_0> {
-  CounterBloc counterBloc;
+  //CounterBloc counterBloc;
+  RemoteBloc remoteBloc;
 
   @override
   void initState() {
     super.initState();
-    counterBloc = CounterBloc(CountRepository());
+    //counterBloc = CounterBloc(CountRepository());
+    remoteBloc = RemoteBloc();
   }
 
   @override
@@ -26,10 +27,10 @@ class _TopPageState extends State<TopPage3_0> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          _WidgetA(counterBloc),
-          _WidgetB(),
-          _WidgetC(counterBloc),
-          LoadingWidget1(counterBloc.isLoading),
+          _WidgetA(remoteBloc),
+//          _WidgetB(),
+          _WidgetC(remoteBloc),
+//          LoadingWidget1(counterBloc.isLoading),
         ],
       ),
     );
@@ -37,22 +38,23 @@ class _TopPageState extends State<TopPage3_0> {
 
   @override
   void dispose() {
-    counterBloc.dispose();
+    //counterBloc.dispose();
     super.dispose();
   }
 }
 
 class _WidgetA extends StatelessWidget {
-  final CounterBloc counterBloc;
+  //final CounterBloc counterBloc;
+  final RemoteBloc remoteBloc;
 
-  _WidgetA(this.counterBloc);
+  _WidgetA(this.remoteBloc);
 
   @override
   Widget build(BuildContext context) {
     print('called _WidgetA#build()');
     return Center(
       child: StreamBuilder(
-        stream: counterBloc.value,
+        stream: remoteBloc.value,
         builder: (context, snapshot) {
           return Text(
             '${snapshot.data}',
@@ -73,16 +75,18 @@ class _WidgetB extends StatelessWidget {
 }
 
 class _WidgetC extends StatelessWidget {
-  final CounterBloc counterBloc;
+  //final CounterBloc counterBloc;
+  final RemoteBloc remoteBloc;
 
-  _WidgetC(this.counterBloc);
+  _WidgetC(this.remoteBloc);
 
   @override
   Widget build(BuildContext context) {
     print('called _WidgetC#build()');
     return RaisedButton(
       onPressed: () {
-        counterBloc.incrementCounter();
+        //counterBloc.incrementCounter();
+        remoteBloc.getData();
       },
       child: Icon(Icons.add),
     );
