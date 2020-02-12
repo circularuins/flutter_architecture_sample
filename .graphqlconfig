@@ -1,0 +1,12 @@
+{
+  "name": "Schema",
+  "schemaPath": "my.schema.json",
+  "extensions": {
+    "endpoints": {
+      "Default": {
+        "url": "https://soeasy-work-graphql-for-aopipw.herokuapp.com/graphql",
+        "introspect": true
+      }
+    }
+  }
+}
