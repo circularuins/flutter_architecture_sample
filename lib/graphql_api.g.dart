@@ -6,22 +6,17 @@ part of 'graphql_api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GraphqlApi _$GraphqlApiFromJson(Map<String, dynamic> json) {
-  return GraphqlApi()
+FoldersData _$FoldersDataFromJson(Map<String, dynamic> json) {
+  return FoldersData()
     ..folders = (json['folders'] as List)
         ?.map((e) =>
             e == null ? null : Folder.fromJson(e as Map<String, dynamic>))
-        ?.toList()
-    ..knowledges = (json['knowledges'] as List)
-        ?.map((e) =>
-            e == null ? null : Knowledge.fromJson(e as Map<String, dynamic>))
         ?.toList();
 }
 
-Map<String, dynamic> _$GraphqlApiToJson(GraphqlApi instance) =>
+Map<String, dynamic> _$FoldersDataToJson(FoldersData instance) =>
     <String, dynamic>{
       'folders': instance.folders?.map((e) => e?.toJson())?.toList(),
-      'knowledges': instance.knowledges?.map((e) => e?.toJson())?.toList(),
     };
 
 Folder _$FolderFromJson(Map<String, dynamic> json) {
@@ -38,6 +33,46 @@ Map<String, dynamic> _$FolderToJson(Folder instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'parentId': instance.parentId,
+    };
+
+BundlesData _$BundlesDataFromJson(Map<String, dynamic> json) {
+  return BundlesData()
+    ..bundles = (json['bundles'] as List)
+        ?.map((e) =>
+            e == null ? null : Bundle.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$BundlesDataToJson(BundlesData instance) =>
+    <String, dynamic>{
+      'bundles': instance.bundles?.map((e) => e?.toJson())?.toList(),
+    };
+
+Bundle _$BundleFromJson(Map<String, dynamic> json) {
+  return Bundle()
+    ..foldersIds =
+        (json['foldersIds'] as List)?.map((e) => e as String)?.toList()
+    ..id = json['id'] as String
+    ..name = json['name'] as String;
+}
+
+Map<String, dynamic> _$BundleToJson(Bundle instance) => <String, dynamic>{
+      'foldersIds': instance.foldersIds,
+      'id': instance.id,
+      'name': instance.name,
+    };
+
+KnowledgesData _$KnowledgesDataFromJson(Map<String, dynamic> json) {
+  return KnowledgesData()
+    ..knowledges = (json['knowledges'] as List)
+        ?.map((e) =>
+            e == null ? null : Knowledge.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+}
+
+Map<String, dynamic> _$KnowledgesDataToJson(KnowledgesData instance) =>
+    <String, dynamic>{
+      'knowledges': instance.knowledges?.map((e) => e?.toJson())?.toList(),
     };
 
 Knowledge _$KnowledgeFromJson(Map<String, dynamic> json) {

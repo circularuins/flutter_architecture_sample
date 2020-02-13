@@ -1,0 +1,46 @@
+query KnowledgesData {
+    knowledges {
+        folderId
+        id
+        training {
+            assignmentDescription
+            audios {
+                audioUrl
+                id
+                isProcessingSucceeded
+                originalFilename
+            }
+            description
+            id
+            images {
+                id
+                imageUrl
+                thumbnailUrl
+            }
+            isAssignmentAttached
+            name
+            pdfs {
+                id
+                originalFilename
+                pdfUrl
+            }
+            processingStatus
+            videos {
+                id
+                isProcessingSucceeded
+                thumbnailUrl
+                videoUrls
+            }
+        }
+        post {
+            id
+        }
+        type
+        user {
+            id
+            name
+            invitationAcceptedAt
+            thumbnailUrl
+        }
+    }
+}

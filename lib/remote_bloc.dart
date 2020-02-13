@@ -26,8 +26,7 @@ class RemoteBloc {
       ),
     );
 
-    final List<Map<String, dynamic>> ids =
-        data.data['knowledges'].cast<Map<String, dynamic>>();
+    final List<Map<String, dynamic>> ids = data.data['knowledges'].cast<Map<String, dynamic>>();
 
     _valueController.sink.add(ids);
   }

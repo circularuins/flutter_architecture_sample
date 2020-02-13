@@ -1,0 +1,7 @@
+query BundlesData {
+    bundles {
+        foldersIds
+        id
+        name
+    }
+}

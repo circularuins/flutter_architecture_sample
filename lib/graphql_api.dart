@@ -7,19 +7,17 @@ import 'package:gql/ast.dart';
 part 'graphql_api.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class GraphqlApi with EquatableMixin {
-  GraphqlApi();
+class FoldersData with EquatableMixin {
+  FoldersData();
 
-  factory GraphqlApi.fromJson(Map<String, dynamic> json) =>
-      _$GraphqlApiFromJson(json);
+  factory FoldersData.fromJson(Map<String, dynamic> json) =>
+      _$FoldersDataFromJson(json);
 
   List<Folder> folders;
 
-  List<Knowledge> knowledges;
-
   @override
-  List<Object> get props => [folders, knowledges];
-  Map<String, dynamic> toJson() => _$GraphqlApiToJson(this);
+  List<Object> get props => [folders];
+  Map<String, dynamic> toJson() => _$FoldersDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -39,6 +37,159 @@ class Folder with EquatableMixin {
   @override
   List<Object> get props => [childrenIds, id, name, parentId];
   Map<String, dynamic> toJson() => _$FolderToJson(this);
+}
+
+class FoldersDataQuery extends GraphQLQuery<FoldersData, JsonSerializable> {
+  FoldersDataQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'FoldersData'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'folders'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'childrenIds'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'parentId'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'FoldersData';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  FoldersData parse(Map<String, dynamic> json) => FoldersData.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class BundlesData with EquatableMixin {
+  BundlesData();
+
+  factory BundlesData.fromJson(Map<String, dynamic> json) =>
+      _$BundlesDataFromJson(json);
+
+  List<Bundle> bundles;
+
+  @override
+  List<Object> get props => [bundles];
+  Map<String, dynamic> toJson() => _$BundlesDataToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Bundle with EquatableMixin {
+  Bundle();
+
+  factory Bundle.fromJson(Map<String, dynamic> json) => _$BundleFromJson(json);
+
+  List<String> foldersIds;
+
+  String id;
+
+  String name;
+
+  @override
+  List<Object> get props => [foldersIds, id, name];
+  Map<String, dynamic> toJson() => _$BundleToJson(this);
+}
+
+class BundlesDataQuery extends GraphQLQuery<BundlesData, JsonSerializable> {
+  BundlesDataQuery();
+
+  @override
+  final DocumentNode document = DocumentNode(definitions: [
+    OperationDefinitionNode(
+        type: OperationType.query,
+        name: NameNode(value: 'BundlesData'),
+        variableDefinitions: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+              name: NameNode(value: 'bundles'),
+              alias: null,
+              arguments: [],
+              directives: [],
+              selectionSet: SelectionSetNode(selections: [
+                FieldNode(
+                    name: NameNode(value: 'foldersIds'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null),
+                FieldNode(
+                    name: NameNode(value: 'name'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null)
+              ]))
+        ]))
+  ]);
+
+  @override
+  final String operationName = 'BundlesData';
+
+  @override
+  List<Object> get props => [document, operationName];
+  @override
+  BundlesData parse(Map<String, dynamic> json) => BundlesData.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class KnowledgesData with EquatableMixin {
+  KnowledgesData();
+
+  factory KnowledgesData.fromJson(Map<String, dynamic> json) =>
+      _$KnowledgesDataFromJson(json);
+
+  List<Knowledge> knowledges;
+
+  @override
+  List<Object> get props => [knowledges];
+  Map<String, dynamic> toJson() => _$KnowledgesDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -219,54 +370,18 @@ enum KnowledgeTypeEnum {
   post,
 }
 
-class GraphqlApiQuery extends GraphQLQuery<GraphqlApi, JsonSerializable> {
-  GraphqlApiQuery();
+class KnowledgesDataQuery
+    extends GraphQLQuery<KnowledgesData, JsonSerializable> {
+  KnowledgesDataQuery();
 
   @override
   final DocumentNode document = DocumentNode(definitions: [
     OperationDefinitionNode(
         type: OperationType.query,
-        name: null,
+        name: NameNode(value: 'KnowledgesData'),
         variableDefinitions: [],
         directives: [],
         selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-              name: NameNode(value: 'folders'),
-              alias: null,
-              arguments: [],
-              directives: [],
-              selectionSet: SelectionSetNode(selections: [
-                FieldNode(
-                    name: NameNode(value: 'childrenIds'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'name'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: 'parentId'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null),
-                FieldNode(
-                    name: NameNode(value: '__typename'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null)
-              ])),
           FieldNode(
               name: NameNode(value: 'knowledges'),
               alias: null,
@@ -495,10 +610,11 @@ class GraphqlApiQuery extends GraphQLQuery<GraphqlApi, JsonSerializable> {
   ]);
 
   @override
-  final String operationName = 'graphql_api';
+  final String operationName = 'KnowledgesData';
 
   @override
   List<Object> get props => [document, operationName];
   @override
-  GraphqlApi parse(Map<String, dynamic> json) => GraphqlApi.fromJson(json);
+  KnowledgesData parse(Map<String, dynamic> json) =>
+      KnowledgesData.fromJson(json);
 }

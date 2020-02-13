@@ -1,6 +1,7 @@
 {
   "name": "Schema",
   "schemaPath": "my.schema.json",
+  "include": "graphql/**/*.graphql",
   "extensions": {
     "endpoints": {
       "Default": {
