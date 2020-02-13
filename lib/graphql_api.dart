@@ -4,6 +4,7 @@ import 'package:artemis/artemis.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gql/ast.dart';
+import './coercers.dart';
 part 'graphql_api.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -356,7 +357,10 @@ class User with EquatableMixin {
 
   String name;
 
-  ISO8601DateTime invitationAcceptedAt;
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  DateTime invitationAcceptedAt;
 
   String thumbnailUrl;
 

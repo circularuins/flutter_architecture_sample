@@ -11,3 +11,8 @@ targets:
             - schema: my.schema.json
               queries_glob: graphql/*.graphql
               output: lib/graphql_api.dart
+          custom_parser_import: './coercers.dart'
+          scalar_mapping:
+          - graphql_type: ISO8601DateTime
+            dart_type: DateTime
+            use_custom_parser: true

@@ -1,3 +1,4 @@
+import 'package:architecture_test/graphql_api.dart';
 import 'package:architecture_test/remote_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -56,8 +57,9 @@ class _WidgetA extends StatelessWidget {
       child: StreamBuilder(
         stream: remoteBloc.value,
         builder: (context, snapshot) {
+          if (snapshot.data == null) return Text('');
           return Text(
-            '${snapshot.data}',
+            '${(snapshot.data as List<Folder>)[0].name}',
             style: Theme.of(context).textTheme.display1,
           );
         },
